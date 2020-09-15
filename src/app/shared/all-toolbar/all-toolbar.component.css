@@ -16,3 +16,7 @@
   position: sticky;
   top: 0;
 }
+
+::ng-deep .mat-menu-content{
+  background-color:white;
+}

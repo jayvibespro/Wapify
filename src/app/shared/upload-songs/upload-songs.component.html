@@ -1,0 +1,15 @@
+<h3 style="text-align: center;font-family: 'Rubik', sans-serif;">Upload your music to Wapify!</h3>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <div style="border-style: dashed;width: 800px;height: 200px;" fxLayout="column" fxLayoutAlign="space-around center">
+
+    <div>
+      <label for="file">Select Audio File</label>
+      <input type="file" (change)="uploadAudio($event)" accept="audio/*"/>
+    </div>
+
+    <div style="font-size: x-small;text-align: center;">
+      All Terms and Conditions Applies
+    </div>
+
+  </div>
+</div>

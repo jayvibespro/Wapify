@@ -1,0 +1,337 @@
+
+<app-all-toolbar></app-all-toolbar>
+<div fxLayout="column" fxLayoutAlign="space-evenly start" style="margin-left: 20px;margin-right: 20px;">
+
+  <div style="font-family: 'Rubik', sans-serif;font-size:x-large;margin-top: 20px;">Top Category</div>
+  <mat-chip-list style="margin-top: 20px;">
+    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 50%, #000000 80%)" (click)="changeStatus('chart')">#CHARTS</mat-chip>
+    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #FF4081 0%, #ff99cc 100%)" (click)="changeStatus('R&B')">R&B</mat-chip>
+    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 0%, #E040FB 100%)">RAP</mat-chip>
+    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #7C4DFF 0%, #40C4FF 100%)">HIPHOP</mat-chip>
+    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 30%, #69F0AE 100%)">BONGO FLEVA</mat-chip>
+    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 50%, #ff99cc 100%)" (click)="changeStatus('beat')">#BEATS</mat-chip>
+
+  </mat-chip-list>
+
+  <div style="margin-top: 10px;">
+
+    <div *ngIf="status === 'chart' ">
+      <div fxLayout="row">
+        <div>
+          <mat-list role="list">
+            <mat-list-item role="listitem" style="margin-bottom: 10px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">1</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Jeje</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Diamond Platnumz</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+
+            <mat-list-item role="listitem" style="margin-bottom: 10px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">2</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+
+          </mat-list>
+        </div>
+
+        <div style="margin-left: 10px;">
+          <mat-card style="height: 200px;width: 220px;background-color: black;border-radius: 4px;">
+            <p style="text-align: center;color: white;font-family: 'Rubik', sans-serif;font-size:medium;">Filter Results</p>
+            <mat-radio-group class="example-radio-group">
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+              <div fxLayout="row">
+                <div>Tanzania</div>
+                <img src="https://img.icons8.com/emoji/24/000000/tanzania-emoji.png"/>
+              </div>
+              </mat-radio-button>
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+              <div fxLayout="row">
+                <div>Kenya</div>
+                <img src="https://img.icons8.com/emoji/24/000000/kenya-emoji.png"/>
+              </div>
+              </mat-radio-button>
+
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+              <div fxLayout="row">
+                <div>Uganda</div>
+                <img src="https://img.icons8.com/emoji/24/000000/uganda-emoji.png"/>
+              </div>
+              </mat-radio-button>
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+              <div fxLayout="row">
+                <div>Nigeria</div>
+                <img src="https://img.icons8.com/emoji/24/000000/nigeria-emoji.png"/>
+              </div>
+              </mat-radio-button>
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+              <div fxLayout="row">
+                <div>South Africa</div>
+                <img src="https://img.icons8.com/emoji/24/000000/south-africa-emoji.png"/>
+              </div>
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div *ngIf="status === 'R&B' ">
+      <div fxLayout="row">
+        <div>
+          <mat-list role="list">
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">1</div>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">2</div>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">3</div>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">4</div>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">5</div>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">6</div>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+
+
+          </mat-list>
+        </div>
+
+        <div style="margin-left: 10px;">
+          <mat-card style="height: 150px;width: 220px;background-color: black;border-radius: 4px;">
+            <p style="text-align: center;color: white;font-family: 'Rubik', sans-serif;font-size:medium;">Filter Results</p>
+            <mat-radio-group class="example-radio-group">
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                New Release
+              </mat-radio-button>
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                Most Liked
+              </mat-radio-button>
+
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                Most Listened
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div *ngIf="status === 'beat' ">
+      <mat-card style="width: 900px;margin-bottom: 10px;background-color: black;">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+            <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">1</div>
+          </div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Emotional Beat</div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">By Jaqkhaliee</div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+          <button mat-raised-button style="background-color: #2979FF;">TSH.10,000/=</button>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">700K Streams</div>
+        </div>
+      </mat-card>
+
+      <mat-card style="width: 900px;margin-bottom: 10px;background-color: black;">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+            <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">2</div>
+          </div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Sound Remix Beat</div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">By Macodex Beatz</div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">2:00</div>
+          <button mat-raised-button style="background-color: #2979FF;">TSH.5,000/=</button>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">2.4K Streams</div>
+        </div>
+      </mat-card>
+
+      <mat-card style="width: 900px;margin-bottom: 10px;background-color: black;">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
+            <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">3</div>
+          </div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Sapu Rap Ngumu Beat</div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">By Mpux</div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+          <button mat-raised-button style="background-color: #2979FF;">TSH.3,000/=</button>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">4K Streams</div>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="footer">
+    <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-left: 10px;margin-right: 10px;">
+      <div style="margin-right: 10px;font-family: 'Rubik', sans-serif;font-size:medium;"
+      >
+      {{ state?.readableCurrentTime }}
+    </div>
+      <mat-slider class="time-slider"
+      min="0" [max]="state?.duration" step="1" [value]="state?.currentTime"
+      (input)="onSliderChangeEnd($event)"
+      ></mat-slider>
+      <div style="margin-left: 10px;font-family: 'Rubik', sans-serif;font-size:medium;"
+      >
+      {{ state?.readableDuration }}
+    </div>
+    </div>
+    <mat-card style="background-color: black;">
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Song: Kwaru</div>
+          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Artist: Zuchu</div>
+        </div>
+
+        <div>
+          <button mat-mini-fab style="background-color:#2979FF;"
+          [disabled]="isFirstPlaying()" (click)="previous()"
+          >
+            <mat-icon style="color: white;">shuffle</mat-icon>
+          </button>
+          <button mat-mini-fab style="background-color:#2979FF;margin-left: 5px;">
+            <mat-icon style="color: white;">fast_rewind</mat-icon>
+          </button>
+          <button mat-fab style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;"
+          (click)="playStream()" [disabled]="state?.error" *ngIf="!state?.playing"
+          >
+            <mat-icon style="color: white;">play_arrow</mat-icon>
+          </button>
+          <button mat-fab (click)="pause()" *ngIf="state?.playing"
+          style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;">
+            <mat-icon style="color: white;">pause</mat-icon>
+          </button>
+          <button mat-mini-fab style="background-color:#2979FF;margin-right: 5px;">
+            <mat-icon style="color: white;">fast_forward</mat-icon>
+          </button>
+          <button mat-mini-fab style="background-color:#2979FF;"
+          [disabled]="isLastPlaying()" (click)="next()">
+            <mat-icon style="color: white;">repeat</mat-icon>
+          </button>
+
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-around center" >
+          <mat-icon style="cursor: pointer;color: white;" (click)="unMute()" *ngIf="soundIconStatus === 'sound'">volume_up</mat-icon>
+          <mat-icon style="cursor: pointer;color: white;" (click)="mute()" *ngIf="soundIconStatus === 'mute'">volume_off</mat-icon>
+          <mat-slider min="0" max="1" step="0.01" [value]="state?.volume"
+          [disabled] = "showVolumeSlider === false"
+          (input)="onVolumeChange($event)"
+          ></mat-slider>
+
+        </div>
+
+      </div>
+    </mat-card>
+  </div>
+
+</div>

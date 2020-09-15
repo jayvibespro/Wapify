@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" toolBar>
+  <mat-toolbar-row>
+    <span style="color: white;font-family:'MuseoModerno', cursive;cursor: pointer;outline: none;"
+    >Wapify</span>
+    <span class="example-spacer"></span>
+    <button mat-stroked-button style="margin-right: 10px;color: white;" routerLink="/studio">Upload</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="color: white;">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon style="color: black;">admin_panel_settings</mat-icon>
+        <span style="color: black;">Profile</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon style="color: black;">next_plan</mat-icon>
+        <span style="color: black;">LogOut</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
