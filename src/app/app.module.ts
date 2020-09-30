@@ -13,11 +13,15 @@ import { LoginAppComponent } from './login-app/login-app.component';
 import { RegisterComponent } from './register/register.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { environment } from 'src/environments/environment';
-
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material/bottom-sheet';
+import { DeleteComponent } from './action-dialog/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     LoginAppComponent,
     RegisterComponent,
     ToolbarComponent,
+    DeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,13 +39,20 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     BrowserAnimationsModule,
     MaterialModule,
     SharedModule,
+    FormsModule,
+    AngularFireAnalyticsModule,
+    ReactiveFormsModule,
+    MatProgressBarModule,
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule,// storage
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
+  entryComponents:[DeleteComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

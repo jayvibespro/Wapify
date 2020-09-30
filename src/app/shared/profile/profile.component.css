@@ -1,0 +1,63 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.year_input {
+  width: 40%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary{
+  background-color: #448AFF;
+  color: #448AFF;
+}
+
+[toolBar]{
+  z-index: 5;
+  position: sticky;
+  top: 0;
+}
+
+
+
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #2979FF;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+  border-radius: 2px;
+}
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+  background-color: #448AFF !important;
+  color: #448AFF !important
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: #448AFF;
+}
+
+::ng-deep .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: #448AFF;
+
+}
+.profile-text{
+  background: -webkit-linear-gradient(#ffffff,#AB47BC,#ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: white;
+  font-size: large;
+}

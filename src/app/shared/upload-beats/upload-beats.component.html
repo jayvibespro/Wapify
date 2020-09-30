@@ -1,1 +1,166 @@
-<p>upload-beats works!</p>
+
+<mat-progress-bar mode="indeterminate" *ngIf="progressStatus === true"></mat-progress-bar>
+
+<mat-toolbar color="primary" toolBar>
+  <mat-toolbar-row>
+    <span style="color: white;font-family:'MuseoModerno', cursive;cursor: pointer;outline: none;"
+    routerLink='/'
+    >Wapify</span>
+    <span class="example-spacer"></span>
+    <button mat-button style="color: white;margin-right: 10px;"
+    >PROFILE</button>
+
+    <button mat-raised-button style="background-color: white;color: #448AFF;"
+    >LOGOUT</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<h3 style="text-align: center;font-family: 'Rubik', sans-serif;">Upload your Beat to Wapify!</h3>
+<div fxLayout="column" fxLayoutAlign="space-around center" >
+
+  <mat-card style="width: 800px;height: 500px;" fxLayout="column">
+
+    <mat-horizontal-stepper [linear]="false" #stepper>
+
+      <mat-step label="Upload Demo Beat">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+
+          <div *ngIf="audioDemoFileUrl !== null">
+            <mat-selection-list style="width:800px" [multiple]="false">
+              <mat-list-option style="margin: 10px;">
+                {{audioDemoFileName}}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="space-between center" style="margin-top: 90px;">
+            <div>
+              <input style="display: none"
+              type="file" (change)="uploadDemoAudio($event)" #fileInput accept="audio/*" >
+              <button color = "warn" mat-raised-button (click)="fileInput.click()" *ngIf="audioDemoFileUrl === null">Select Audio File</button>
+              <button color = "warn" mat-raised-button *ngIf="audioDemoFileUrl !== null" matStepperNext>NEXT</button>
+
+
+            </div>
+
+            <div style="font-size: x-small;text-align: center;">
+              Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.
+            </div>
+          </div>
+
+        </div>
+
+      </mat-step>
+
+      <mat-step label="Upload Original Beat">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+
+          <div *ngIf="audioOriginalFileUrl !== null">
+            <mat-selection-list style="width:800px" [multiple]="false">
+              <mat-list-option style="margin: 10px;">
+                {{audioDemoFileName}}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="space-between center" style="margin-top: 90px;">
+            <div>
+              <input style="display: none"
+              type="file" (change)="uploadOriginalBeat($event)" #originalBeatFile accept="audio/*" >
+              <button color = "warn" mat-raised-button (click)="originalBeatFile.click()" *ngIf="audioOriginalFileUrl === null">Select Audio File</button>
+              <button color = "warn" mat-raised-button *ngIf="audioOriginalFileUrl !== null" matStepperNext>NEXT</button>
+
+
+            </div>
+
+            <div style="font-size: x-small;text-align: center;">
+              Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.
+            </div>
+          </div>
+
+        </div>
+
+      </mat-step>
+
+      <mat-step label="Metadata">
+
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Producer</mat-label>
+              <input matInput name="artist" [(ngModel)]="producer" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Beat Name</mat-label>
+              <input matInput [(ngModel)]="title" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Price</mat-label>
+              <input matInput [(ngModel)]="price" required>
+            </mat-form-field>
+          </div>
+
+
+          <div>
+
+            <div fxLayout="column" fxLayoutAlign="space-around center">
+              <div>
+                <img src={{imageUrl}} (click)="fileInputImage.click()" style="cursor: pointer;" style="width: 100px;height:100px"/>
+              </div>
+             </div>
+             <input style="display: none" type="file" (change)="selectImage($event)" #fileInputImage accept=".png,.jpg">
+
+          </div>
+
+        </div>
+
+        <div fxLayout="row">
+          <mat-form-field>
+            <mat-label>Choose Genre</mat-label>
+            <mat-select [(ngModel)]="genre" required>
+              <mat-option value="RAP">RAP</mat-option>
+              <mat-option value="R&B" >R&B</mat-option>
+              <mat-option value="TRAP" >TRAP</mat-option>
+              <mat-option value="R&B" >BONGO FLEVA</mat-option>
+              <mat-option value="HIP POP">HIP POP</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="year_input" style="margin-left: 20px;">
+            <mat-label>Year</mat-label>
+            <input matInput [(ngModel)]="year" required>
+          </mat-form-field>
+        </div>
+
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Beat Description</mat-label>
+          <textarea matInput [(ngModel)]="description" required></textarea>
+        </mat-form-field>
+
+        <button mat-button matStepperNext color="warn">Next</button>
+
+      </mat-step>
+
+       <mat-step label="Done">
+
+        <div fxLayout="column" fxLayoutAlign="space-between center" style="margin-top: 90px;">
+          <div>
+            <button color = "warn" mat-raised-button (click)="uploadMusicData()">UPLOAD</button>
+          </div>
+
+          <div style="font-size: x-small;text-align: center;">
+            By clicking Upload You agree terms and conditions
+          </div>
+        </div>
+
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card>
+
+
+</div>

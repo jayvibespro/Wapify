@@ -1,3 +1,4 @@
+<mat-progress-bar mode="indeterminate" *ngIf="progressStatus === true"></mat-progress-bar>
 <app-toolbar></app-toolbar>
 
 <div  fxLayout="row" fxLayoutAlign="center center">
@@ -8,16 +9,18 @@
     <h5 style="text-align: center;">🎶🎸🎻🎺🥁🎷🎼🎛️🎵</h5>
     <form class="example-form">
       <mat-form-field class="example-full-width">
-        <mat-label>Username</mat-label>
-        <input matInput style="color: black;" required>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput style="color: black;" required [(ngModel)]="email" name="username">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput style="color: black;" required>
+        <input type="password" matInput style="color: black;" required [(ngModel)]="password" name="password">
       </mat-form-field>
+
+    <button mat-raised-button style="width: 100%;background-color:#448AFF;" (click)="login()">Login</button>
+
     </form>
-    <button mat-raised-button style="width: 100%;background-color:#448AFF;" routerLink='/all'>Login</button>
 
   </mat-card>
 </div>

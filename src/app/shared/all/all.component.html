@@ -1,337 +1,574 @@
-
-<app-all-toolbar></app-all-toolbar>
-<div fxLayout="column" fxLayoutAlign="space-evenly start" style="margin-left: 20px;margin-right: 20px;">
-
-  <div style="font-family: 'Rubik', sans-serif;font-size:x-large;margin-top: 20px;">Top Category</div>
-  <mat-chip-list style="margin-top: 20px;">
-    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 50%, #000000 80%)" (click)="changeStatus('chart')">#CHARTS</mat-chip>
-    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #FF4081 0%, #ff99cc 100%)" (click)="changeStatus('R&B')">R&B</mat-chip>
-    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 0%, #E040FB 100%)">RAP</mat-chip>
-    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #7C4DFF 0%, #40C4FF 100%)">HIPHOP</mat-chip>
-    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 30%, #69F0AE 100%)">BONGO FLEVA</mat-chip>
-    <mat-chip style="cursor: pointer;background: linear-gradient(to bottom, #33ccff 50%, #ff99cc 100%)" (click)="changeStatus('beat')">#BEATS</mat-chip>
-
-  </mat-chip-list>
-
-  <div style="margin-top: 10px;">
-
-    <div *ngIf="status === 'chart' ">
-      <div fxLayout="row">
-        <div>
-          <mat-list role="list">
-            <mat-list-item role="listitem" style="margin-bottom: 10px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">1</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Jeje</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Diamond Platnumz</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
+<mat-progress-bar mode="indeterminate" *ngIf="progressStatus === true"></mat-progress-bar>
 
 
-            <mat-list-item role="listitem" style="margin-bottom: 10px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">2</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
+<mat-toolbar color="primary" toolBar>
+  <mat-toolbar-row>
+    <mat-icon (click)="drawer.toggle()" style="margin-right:10px;align-self: center;cursor: pointer;outline-color: cornflowerblue;">menu</mat-icon>
+
+    <span style="color: white;font-family:'MuseoModerno', cursive;cursor: pointer;outline: none;"
+    (click)="changeStatus('homeStart')">Wapify</span>
+    <span class="example-spacer"></span>
+    <button mat-stroked-button style="margin-right: 10px;color: white;" routerLink="/studio">Upload</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="color: white;">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon style="color: black;">admin_panel_settings</mat-icon>
+        <span style="color: black;">Profile</span>
+      </button>
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon style="color: black;">next_plan</mat-icon>
+        <span style="color: black;">LogOut</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 
-          </mat-list>
+
+
+<mat-drawer-container class="example-container">
+
+  <mat-drawer #drawer mode="over" style="width: 300px;">
+    <mat-selection-list [multiple]="false">
+
+      <mat-list-option (click)="changeStatus('homeStart')">
+        <div fxLayout="row">
+          <div fxFlex="10">
+            <mat-icon>home</mat-icon>
+          </div>
+          <div fxFlex="80" style="margin-left: 10px;">Home</div>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option (click)="changeStatus('chart')">
+        <div fxLayout="row">
+          <div fxFlex="10">
+            <mat-icon>home</mat-icon>
+          </div>
+          <div fxFlex="80" style="margin-left: 10px;">#CHARTS</div>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option (click)="changeStatus('beat')">
+        <div fxLayout="row">
+          <div fxFlex="10">
+            <mat-icon>topic</mat-icon>
+          </div>
+          <div fxFlex="90" style="margin-left: 10px;">#BEATS</div>
         </div>
 
-        <div style="margin-left: 10px;">
-          <mat-card style="height: 200px;width: 220px;background-color: black;border-radius: 4px;">
-            <p style="text-align: center;color: white;font-family: 'Rubik', sans-serif;font-size:medium;">Filter Results</p>
-            <mat-radio-group class="example-radio-group">
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
-              <div fxLayout="row">
-                <div>Tanzania</div>
-                <img src="https://img.icons8.com/emoji/24/000000/tanzania-emoji.png"/>
+      </mat-list-option>
+
+    </mat-selection-list>
+
+    <mat-accordion>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Category
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option (click)="changeStatus('musicCategory','R&B')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
               </div>
-              </mat-radio-button>
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+              <div fxFlex="90" style="margin-left: 10px;">R&B</div>
+            </div>
+
+          </mat-list-option >
+
+          <mat-list-option (click)="changeStatus('musicCategory','RAP')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">RAP</div>
+            </div>
+
+          </mat-list-option>
+
+          <mat-list-option (click)="changeStatus('musicCategory','HIP POP')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">HIPHOP</div>
+            </div>
+
+          </mat-list-option>
+
+          <mat-list-option (click)="changeStatus('musicCategory','TRAP')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">TRAP</div>
+            </div>
+
+          </mat-list-option>
+
+          <mat-list-option (click)="changeStatus('musicCategory','ROCK')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">ROCK</div>
+            </div>
+
+          </mat-list-option>
+
+          <mat-list-option (click)="changeStatus('musicCategory','GOSPEL')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">GOSPEL</div>
+            </div>
+
+          </mat-list-option>
+
+          <mat-list-option (click)="changeStatus('musicCategory','RUMBA')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">RUMBA</div>
+            </div>
+
+          </mat-list-option>
+
+          <mat-list-option (click)="changeStatus('musicCategory','POP')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">POP</div>
+            </div>
+
+          </mat-list-option>
+
+          <mat-list-option (click)="changeStatus('musicCategory','BONGO FLEVA')">
+            <div fxLayout="row">
+              <div fxFlex="10">
+                <mat-icon>topic</mat-icon>
+              </div>
+              <div fxFlex="90" style="margin-left: 10px;">BONGO FLEVA</div>
+            </div>
+
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <div fxLayout="column" fxLayoutAlign="space-between none" style="margin: 5px;">
+
+      <div>
+
+        <div *ngIf="status === 'homeStart'" style="height: fit-content;" fxLayout="column wrap" >
+
+          <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 20px;">
+            <h4 style="font-family:'MuseoModerno';font-size:large">All Category</h4>
+          </div>
+
+
+          <div fxLayout="row" fxLayout.fxFlex.xs="column" fxLayoutAlign="space-around center" class="classContainer">
+
+            <div fxLayout="column" fxLayoutAlign="space-around center" (click)="changeStatus('musicCategory','RAP')" class="categoryClass1">
+
+              <div fxLayout="column" fxLayoutAlign="space-around center">
+                <img src="assets/jeje.jpg" alt="Avatar" class="image-box">
+                <div>
+                  <div style="font-family:'MuseoModerno';font-size:small">RAP</div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div fxLayout="column" fxLayoutAlign="space-around center" (click)="changeStatus('musicCategory','BONGO FLEVA')" class="categoryClass2">
+
+              <div fxLayout="column" fxLayoutAlign="space-around center">
+                <img src="assets/acha_lizame.jpg" alt="Avatar" class="image-box">
+                <div>
+                  <div style="font-family:'MuseoModerno';font-size:small">Bongo Fleva</div>
+                </div>
+              </div>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="space-around center" (click)="changeStatus('musicCategory','TRAP')" class="categoryClass3">
+
+              <div fxLayout="column" fxLayoutAlign="space-around center">
+                <img src="assets/mariao_song.jpg" alt="Avatar" class="image-box">
+                <div>
+                  <div style="font-family:'MuseoModerno';font-size:small">Trap</div>
+                </div>
+              </div>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="space-around center" (click)="changeStatus('musicCategory','R&B')" class="categoryClass4">
+
+              <div fxLayout="column" fxLayoutAlign="space-around center">
+                <img src="assets/wana.png" alt="Avatar" class="image-box">
+                <div>
+                  <div style="font-family:'MuseoModerno';font-size:small">R&B</div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div fxLayout="column" fxLayoutAlign="space-around center" (click)="changeStatus('musicCategory','HIP POP')" class="categoryClass5">
+
+              <div fxLayout="column" fxLayoutAlign="space-around center">
+                <img src="assets/marioo.png" alt="Avatar" class="image-box">
+                <div>
+                  <div style="font-family:'MuseoModerno';font-size:small">HIPHOP</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div *ngIf="status === 'chart' ">
+
+          <mat-drawer-container class="chart_side_nav">
+            <mat-drawer mode="side" opened style="height:800px">
+
               <div fxLayout="row">
                 <div>Kenya</div>
                 <img src="https://img.icons8.com/emoji/24/000000/kenya-emoji.png"/>
               </div>
-              </mat-radio-button>
-
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+              <div fxLayout="row">
+                <div>Tanzania</div>
+                <img src="https://img.icons8.com/emoji/24/000000/tanzania-emoji.png"/>
+              </div>
               <div fxLayout="row">
                 <div>Uganda</div>
                 <img src="https://img.icons8.com/emoji/24/000000/uganda-emoji.png"/>
               </div>
-              </mat-radio-button>
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
               <div fxLayout="row">
                 <div>Nigeria</div>
                 <img src="https://img.icons8.com/emoji/24/000000/nigeria-emoji.png"/>
               </div>
-              </mat-radio-button>
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
               <div fxLayout="row">
                 <div>South Africa</div>
                 <img src="https://img.icons8.com/emoji/24/000000/south-africa-emoji.png"/>
               </div>
-              </mat-radio-button>
-            </mat-radio-group>
-          </mat-card>
+            </mat-drawer>
+
+            <mat-drawer-content>
+              <div fxLayout="row">
+                <div>
+                  <mat-list role="list">
+                    <mat-list-item role="listitem" style="margin-bottom: 10px">
+                      <mat-card style="width: 900px;background-color: #FAFAFA;">
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                          <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;color: black;">1</div>
+                          <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">Jeje</div>
+                          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;color: black;">Diamond Platnumz</div>
+                        </div>
+                      </mat-card>
+                    </mat-list-item>
+
+
+                    <mat-list-item role="listitem" style="margin-bottom: 10px">
+                      <mat-card style="width: 900px;background-color: #FAFAFA;">
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                          <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;color: black;">2</div>
+                          <div style="font-family: 'Rubik', sans-serif;font-size:medium;color:black">Kwaru</div>
+                          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;color: black;">Zuchu</div>
+                        </div>
+                      </mat-card>
+                    </mat-list-item>
+
+
+                  </mat-list>
+                </div>
+
+
+              </div>
+            </mat-drawer-content>
+          </mat-drawer-container>
+
+        </div>
+
+        <div *ngIf="status === 'musicCategory' " class="musicCategoryClass" fxLayout="row">
+
+
+          <div *ngIf="noResultLayoutStatus === true">
+            <img src="https://img.icons8.com/color/48/000000/empty-box.png"/>
+            <div>No Results</div>
+          </div>
+
+          <div *ngIf="noResultLayoutStatus === false" class="resultClass" style="width: 100%;margin-top: 30px;">
+
+            <div class="resultOnPhone">
+              <mat-list *ngFor="let audio of audioStreamerFromFirebase;let musicIndex = index">
+                <mat-list-item style="margin-bottom: 80px">
+                  <mat-card style="background-color: #FAFAFA;" class="matCardPhone"
+                  (click)="playStream(audio.payload.doc.id,musicIndex,
+                        audio.payload.doc.data().artirst,
+                        audio.payload.doc.data().title,
+                        audio.payload.doc.data().imageCover,
+                        audio.payload.doc.data().songUrl,
+                        audio.payload.doc.data().count)"
+                  >
+                    <div fxLayout="row">
+                      <div fxFlex="40%">
+                        <img src={{audio.payload.doc.data().imageCover}} style="width: 80px;height: 80px;">
+                      </div>
+                      <div fxFlex="60%" fxLayout="column" >
+                        <div style="color: black;font-weight: bold;">{{audio.payload.doc.data().artirst}}</div>
+                        <div style="color: black;font-weight: 200;">{{audio.payload.doc.data().title}}</div>
+                        <div style="color: black;margin-top: 10px;font-weight: lighter;">{{audio.payload.doc.data().count}} {{"Streams"}}</div>
+                      </div>
+                    </div>
+                  </mat-card>
+                </mat-list-item>
+              </mat-list>
+            </div>
+
+            <div class="resultOnLarge">
+
+              <mat-list role="list" *ngFor="let audio of audioStreamerFromFirebase;let musicIndex = index" fxLayout="column">
+
+                <mat-list-item role="listitem" style="margin-bottom: 20px">
+                  <mat-card style="width: 900px;background-color: #FAFAFA;" >
+                    <div fxLayout="row" fxLayoutAlign="space-between center" >
+                      <div fxLayout="row" fxLayoutAlign="space-between center" >
+                        <mat-icon style="cursor: pointer;color: black;"
+                        (click)="playStream(audio.payload.doc.id,musicIndex,
+                        audio.payload.doc.data().artirst,
+                        audio.payload.doc.data().title,
+                        audio.payload.doc.data().imageCover,
+                        audio.payload.doc.data().songUrl,
+                        audio.payload.doc.data().count)">play_circle_filled</mat-icon>
+                      </div>
+
+                      <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;" class="songName" matTooltip={{audio.payload.doc.data().artirst}}>{{audio.payload.doc.data().artirst}}</div>
+                      <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;color: black;" class="songName" matTooltip={{audio.payload.doc.data().title}}>{{audio.payload.doc.data().title}}</div>
+                      <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">3:03</div>
+                      <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">{{audio.payload.doc.data().count}} {{"Streams"}}</div>
+                    </div>
+                  </mat-card>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+
+          <div style="margin-left: 10px;" class="filterClass">
+            <mat-card style="height: 150px;width: 220px;background-color: #448AFF;border-radius: 4px;">
+              <p style="text-align: center;color: white;font-family: 'Rubik', sans-serif;font-size:medium;">Filter Results</p>
+              <mat-radio-group class="example-radio-group">
+                <mat-radio-button class="example-radio-button"
+                style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                  New Release
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button"
+                style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                  Most Liked
+                </mat-radio-button>
+
+                <mat-radio-button class="example-radio-button"
+                style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                  Most Listened
+                </mat-radio-button>
+              </mat-radio-group>
+            </mat-card>
+          </div>
+
+
+
+          <div class="footer">
+
+            <div class="phoneFooter">
+              <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-left: 10px;margin-right: 10px;">
+
+                <div style="margin-right: 10px;font-family: 'Rubik', sans-serif;font-size:medium;">
+                {{ state?.readableCurrentTime }}
+              </div>
+
+                <mat-slider class="time-slider"
+                min="0" [max]="state?.duration" step="1" [value]="state?.currentTime"
+                (input)="onSliderChangeEnd($event)"
+                ></mat-slider>
+                <div style="margin-left: 10px;font-family: 'Rubik', sans-serif;font-size:medium;"
+                >
+                {{ state?.readableDuration }}
+              </div>
+
+              </div>
+
+               <mat-card style="background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+
+                  <div>
+
+                    <button mat-mini-fab style="background-color:#2979FF;"
+                    [disabled]="isFirstPlaying()" (click)="previous()"
+                    >
+                      <mat-icon style="color: white;">shuffle</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color:#2979FF;margin-left: 5px;"
+                    (click)="previous()">
+                      <mat-icon style="color: white;">fast_rewind</mat-icon>
+                    </button>
+                    <button mat-fab style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;"
+                    [disabled]="state?.error" *ngIf="!state?.playing"
+                    (click)="play()"
+                    >
+                      <mat-icon style="color: white;">play_arrow</mat-icon>
+                    </button>
+                    <button mat-fab (click)="pause()" *ngIf="state?.playing"
+                    style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;">
+                      <mat-icon style="color: white;">pause</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color:#2979FF;margin-right: 5px;"
+                    (click)="next()">
+                      <mat-icon style="color: white;">fast_forward</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color:#2979FF;"
+                    [disabled]="isLastPlaying()" (click)="next()">
+                      <mat-icon style="color: white;">repeat</mat-icon>
+                    </button>
+
+                  </div>
+
+
+                </div>
+              </mat-card>
+
+            </div>
+
+
+            <div class="pcFooter">
+              <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-left: 10px;margin-right: 10px;">
+
+                <div style="margin-right: 10px;font-family: 'Rubik', sans-serif;font-size:medium;">
+                {{ state?.readableCurrentTime }}
+              </div>
+
+                <mat-slider class="time-slider"
+                min="0" [max]="state?.duration" step="1" [value]="state?.currentTime"
+                (input)="onSliderChangeEnd($event)"
+                ></mat-slider>
+                <div style="margin-left: 10px;font-family: 'Rubik', sans-serif;font-size:medium;"
+                >
+                {{ state?.readableDuration }}
+              </div>
+
+              </div>
+              <mat-card style="background-color: #E4E8EB;">
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+
+                  <img class="musicCover" src={{songServ.songCoverImg}} style="width: 100px;height: 100px;margin-right: 10px;">
+
+                  <div>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;" class="songName" matTooltip={{songServ.songName}}>Song: {{songServ.songName}}</div>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;" class="songArtist" matTooltip={{songServ.songArtist}}>Artist: {{songServ.songArtist}}</div>
+                  </div>
+
+                  <div>
+                    <button mat-mini-fab style="background-color:#2979FF;"
+                    [disabled]="isFirstPlaying()" (click)="previous()"
+                    >
+                      <mat-icon style="color: black;">shuffle</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color:#2979FF;margin-left: 5px;"
+                    (click)="previous()">
+                      <mat-icon style="color: black;">fast_rewind</mat-icon>
+                    </button>
+                    <button mat-fab style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;"
+                    [disabled]="state?.error" *ngIf="!state?.playing"
+                    (click)="play()"
+                    >
+                      <mat-icon style="color: black;">play_arrow</mat-icon>
+                    </button>
+                    <button mat-fab (click)="pause()" *ngIf="state?.playing"
+                    style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;">
+                      <mat-icon style="color: black;">pause</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color:#2979FF;margin-right: 5px;"
+                    (click)="next()">
+                      <mat-icon style="color: black;">fast_forward</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color:#2979FF;"
+                    [disabled]="isLastPlaying()" (click)="next()">
+                      <mat-icon style="color: black;">repeat</mat-icon>
+                    </button>
+
+                  </div>
+
+                  <div fxLayout="row" fxLayoutAlign="space-around center" >
+                    <mat-icon style="cursor: pointer;color: black;" (click)="unMute()" *ngIf="soundIconStatus === 'sound'">volume_up</mat-icon>
+                    <mat-icon style="cursor: pointer;color: black;" (click)="mute()" *ngIf="soundIconStatus === 'mute'">volume_off</mat-icon>
+                    <mat-slider min="0" max="1" step="0.01" [value]="state?.volume"
+                    [disabled] = "showVolumeSlider === false"
+                    (input)="onVolumeChange($event)"
+                    ></mat-slider>
+
+                  </div>
+
+                </div>
+              </mat-card>
+            </div>
+
+
+          </div>
+
+
+
+
+
+        </div>
+
+        <div *ngIf="status === 'beat' ">
+
+          <div *ngIf="noResultLayoutStatus === true">
+            <img src="https://img.icons8.com/color/48/000000/empty-box.png"/>
+            <div>No Results</div>
+          </div>
+
+          <div *ngIf="noResultLayoutStatus === false">
+            <mat-list role="list" *ngFor="let beat of beatStreamFromFirebase" style="margin-bottom: 20px">
+              <mat-list-item>
+                <mat-card style="width: 900px;margin-bottom: 10px;background-color: #FAFAFA;">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                      <mat-icon style="cursor: pointer;color: black;">play_circle_filled</mat-icon>
+                    </div>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">Emotional Beat</div>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;color: black;">{{beat.payload.doc.data().producer}}</div>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">3:03</div>
+                    <button mat-raised-button style="background-color: #2979FF;color: black;">{{"TSH "+beat.payload.doc.data().price+" /="}}</button>
+                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">700K Streams</div>
+                  </div>
+                </mat-card>
+              </mat-list-item>
+            </mat-list>
+          </div>
+
+
         </div>
 
       </div>
 
     </div>
 
-    <div *ngIf="status === 'R&B' ">
-      <div fxLayout="row">
-        <div>
-          <mat-list role="list">
-            <mat-list-item role="listitem" style="margin-bottom: 20px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">1</div>
-                  </div>
-
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
-
-            <mat-list-item role="listitem" style="margin-bottom: 20px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">2</div>
-                  </div>
-
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
-
-            <mat-list-item role="listitem" style="margin-bottom: 20px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">3</div>
-                  </div>
-
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
-
-            <mat-list-item role="listitem" style="margin-bottom: 20px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">4</div>
-                  </div>
-
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
-
-            <mat-list-item role="listitem" style="margin-bottom: 20px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">5</div>
-                  </div>
-
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
-
-            <mat-list-item role="listitem" style="margin-bottom: 20px">
-              <mat-card style="width: 900px;background-color: black;">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-                    <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">6</div>
-                  </div>
-
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Kwaru</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">Zuchu</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
-                </div>
-              </mat-card>
-            </mat-list-item>
-
-
-          </mat-list>
-        </div>
-
-        <div style="margin-left: 10px;">
-          <mat-card style="height: 150px;width: 220px;background-color: black;border-radius: 4px;">
-            <p style="text-align: center;color: white;font-family: 'Rubik', sans-serif;font-size:medium;">Filter Results</p>
-            <mat-radio-group class="example-radio-group">
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
-                New Release
-              </mat-radio-button>
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
-                Most Liked
-              </mat-radio-button>
-
-              <mat-radio-button class="example-radio-button"
-              style="font-family: 'Rubik', sans-serif;font-size:medium;">
-                Most Listened
-              </mat-radio-button>
-            </mat-radio-group>
-          </mat-card>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div *ngIf="status === 'beat' ">
-      <mat-card style="width: 900px;margin-bottom: 10px;background-color: black;">
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-            <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">1</div>
-          </div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Emotional Beat</div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">By Jaqkhaliee</div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-          <button mat-raised-button style="background-color: #2979FF;">TSH.10,000/=</button>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">700K Streams</div>
-        </div>
-      </mat-card>
-
-      <mat-card style="width: 900px;margin-bottom: 10px;background-color: black;">
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-            <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">2</div>
-          </div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Sound Remix Beat</div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">By Macodex Beatz</div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">2:00</div>
-          <button mat-raised-button style="background-color: #2979FF;">TSH.5,000/=</button>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">2.4K Streams</div>
-        </div>
-      </mat-card>
-
-      <mat-card style="width: 900px;margin-bottom: 10px;background-color: black;">
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-icon style="cursor: pointer;">play_circle_filled</mat-icon>
-            <div style="font-family: 'Rubik', sans-serif;font-size:medium;margin-left: 40px;">3</div>
-          </div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Sapu Rap Ngumu Beat</div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">By Mpux</div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
-          <button mat-raised-button style="background-color: #2979FF;">TSH.3,000/=</button>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">4K Streams</div>
-        </div>
-      </mat-card>
-    </div>
-
-  </div>
+  </mat-drawer-content>
+ </mat-drawer-container>
 
 
 
-
-  <div class="footer">
-    <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-left: 10px;margin-right: 10px;">
-      <div style="margin-right: 10px;font-family: 'Rubik', sans-serif;font-size:medium;"
-      >
-      {{ state?.readableCurrentTime }}
-    </div>
-      <mat-slider class="time-slider"
-      min="0" [max]="state?.duration" step="1" [value]="state?.currentTime"
-      (input)="onSliderChangeEnd($event)"
-      ></mat-slider>
-      <div style="margin-left: 10px;font-family: 'Rubik', sans-serif;font-size:medium;"
-      >
-      {{ state?.readableDuration }}
-    </div>
-    </div>
-    <mat-card style="background-color: black;">
-      <div fxLayout="row" fxLayoutAlign="space-around center">
-        <div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Song: Kwaru</div>
-          <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Artist: Zuchu</div>
-        </div>
-
-        <div>
-          <button mat-mini-fab style="background-color:#2979FF;"
-          [disabled]="isFirstPlaying()" (click)="previous()"
-          >
-            <mat-icon style="color: white;">shuffle</mat-icon>
-          </button>
-          <button mat-mini-fab style="background-color:#2979FF;margin-left: 5px;">
-            <mat-icon style="color: white;">fast_rewind</mat-icon>
-          </button>
-          <button mat-fab style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;"
-          (click)="playStream()" [disabled]="state?.error" *ngIf="!state?.playing"
-          >
-            <mat-icon style="color: white;">play_arrow</mat-icon>
-          </button>
-          <button mat-fab (click)="pause()" *ngIf="state?.playing"
-          style="background-color:#2979FF;margin-left: 5px;margin-right: 5px;">
-            <mat-icon style="color: white;">pause</mat-icon>
-          </button>
-          <button mat-mini-fab style="background-color:#2979FF;margin-right: 5px;">
-            <mat-icon style="color: white;">fast_forward</mat-icon>
-          </button>
-          <button mat-mini-fab style="background-color:#2979FF;"
-          [disabled]="isLastPlaying()" (click)="next()">
-            <mat-icon style="color: white;">repeat</mat-icon>
-          </button>
-
-        </div>
-
-        <div fxLayout="row" fxLayoutAlign="space-around center" >
-          <mat-icon style="cursor: pointer;color: white;" (click)="unMute()" *ngIf="soundIconStatus === 'sound'">volume_up</mat-icon>
-          <mat-icon style="cursor: pointer;color: white;" (click)="mute()" *ngIf="soundIconStatus === 'mute'">volume_off</mat-icon>
-          <mat-slider min="0" max="1" step="0.01" [value]="state?.volume"
-          [disabled] = "showVolumeSlider === false"
-          (input)="onVolumeChange($event)"
-          ></mat-slider>
-
-        </div>
-
-      </div>
-    </mat-card>
-  </div>
-
-</div>

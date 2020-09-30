@@ -3,16 +3,14 @@
 <h2 style="text-align: center;font-family: 'Rubik', sans-serif;font-size:medium;">Please select your upload type:</h2>
 <h4 style="text-align: center;font-family: 'Rubik', sans-serif;font-size:medium;">Supported file types: Zip, MP3, WAV, AIFF, OGG, FLAC and M4A. File Size: Up to 100MB per song.</h4>
 
-<div fxLayout="row" fxLayoutAlign="center center">
+<div class="fileUploads" fxLayoutAlign >
 
-
-  <mat-card style="width: 30%;margin-left:10px;margin-top: 20px;background-color: black">
+  <mat-card  class="songUpload">
    <div fxLayout="column" fxLayoutAlign="space-around center">
     <div>
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-      width="96" height="96"
+      <svg xmlns="http://www.w3.org/2000/svg" x="0%" y="0%"
       viewBox="0 0 172 172"
-      style=" fill:#000000;">
+      style=" fill:#000000; width: 96; height: 96;" class="inupload">
       <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
         <path d="M0,172v-172h172v172z" fill="none"></path>
         <g fill="#448aff">
@@ -25,10 +23,11 @@
     <button mat-raised-button routerLink="/upload_song">Upload</button>
    </div>
   </mat-card>
-  <mat-card style="width: 30%;margin-left:10px;margin-top: 20px;background-color: black">
+
+  <mat-card class="beatUpload">
     <div fxLayout="column" fxLayoutAlign="space-around center">
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      <div class="inupload">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0%" y="0%"
         width="96" height="96"
         viewBox="0 0 172 172"
         style=" fill:#000000;"><defs>
@@ -54,10 +53,24 @@
             <path d="M143.33333,21.5h-114.66667c-3.95958,0 -7.16667,3.20708 -7.16667,7.16667v21.5h129v-21.5c0,-3.95958 -3.20708,-7.16667 -7.16667,-7.16667z" fill="url(#color-1_zLDFZ48l9wfc_gr1)"></path><path d="M146.91667,35.83333h-121.83333c-3.95958,0 -7.16667,3.20708 -7.16667,7.16667v17.91667h136.16667v-17.91667c0,-3.95958 -3.20708,-7.16667 -7.16667,-7.16667z" fill="url(#color-2_zLDFZ48l9wfc_gr2)"></path><path d="M150.5,50.16667h-129c-3.95958,0 -7.16667,3.20708 -7.16667,7.16667v86c0,3.95958 3.20708,7.16667 7.16667,7.16667h129c3.95958,0 7.16667,-3.20708 7.16667,-7.16667v-86c0,-3.95958 -3.20708,-7.16667 -7.16667,-7.16667z" fill="url(#color-3_zLDFZ48l9wfc_gr3)"></path>
             <path d="M105.70833,68.08333h-16.125c-3.95242,0 -7.16667,3.21425 -7.16667,7.16667v21.87267c-1.17533,-0.24725 -2.36858,-0.37267 -3.58333,-0.37267c-9.87925,0 -17.91667,8.03742 -17.91667,17.91667c0,9.87925 8.03742,17.91667 17.91667,17.91667c9.87925,0 17.91667,-8.03742 17.91667,-17.91667v-28.66667h8.95833c2.96342,0 5.375,-2.41158 5.375,-5.375v-7.16667c0,-2.96342 -2.41158,-5.375 -5.375,-5.375z" fill="#000000" opacity="0.05"></path><path d="M105.70833,69.875h-16.125c-2.96342,0 -5.375,2.41158 -5.375,5.375v24.252c-1.73433,-0.63783 -3.53317,-0.96033 -5.375,-0.96033c-8.89025,0 -16.125,7.23475 -16.125,16.125c0,8.89025 7.23475,16.125 16.125,16.125c8.89025,0 16.125,-7.23475 16.125,-16.125v-30.45833h10.75c1.978,0 3.58333,-1.60533 3.58333,-3.58333v-7.16667c0,-1.978 -1.60533,-3.58333 -3.58333,-3.58333z" fill="#000000" opacity="0.07"></path><path d="M78.83333,100.33333c-7.91558,0 -14.33333,6.41775 -14.33333,14.33333c0,7.91558 6.41775,14.33333 14.33333,14.33333c7.91558,0 14.33333,-6.41775 14.33333,-14.33333c0,-7.91558 -6.41775,-14.33333 -14.33333,-14.33333z" fill="#ffffff"></path><path d="M105.70833,71.66667h-16.125c-1.978,0 -3.58333,1.60533 -3.58333,3.58333v39.41667h7.16667v-32.25h12.54167c0.989,0 1.79167,-0.80267 1.79167,-1.79167v-7.16667c0,-0.989 -0.80267,-1.79167 -1.79167,-1.79167z" fill="#ffffff"></path></g></g></svg>
       </div>
-      <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Upload Beat</div>
+      <div style="font-family: 'Rubik', sans-serif;font-size:medium;" >Upload Beat</div>
       <button mat-raised-button routerLink="/upload_beat">Upload</button>
      </div>
   </mat-card>
+
+
+  <mat-card class="coverUpload">
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+      <div class="inupload">
+        <img src = "assets/wapify_image.gif" style="width: 100px;height: 100px;">
+      </div>
+      <div style="font-family: 'Rubik', sans-serif;font-size:medium;">Upload CoverPhoto</div>
+      <button mat-raised-button routerLink="/upload_cover">Upload</button>
+     </div>
+  </mat-card>
+
+
+
 </div><br><br><br><br>
 
 <p style="text-align: center;font-size: x-small;font-weight: bold;">Wapify uploads are for artists and content creators only.

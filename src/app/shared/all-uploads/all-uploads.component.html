@@ -1,0 +1,212 @@
+<mat-progress-bar mode="indeterminate" *ngIf="progressStatus === true"></mat-progress-bar>
+
+<mat-toolbar color="primary" toolBar>
+  <mat-toolbar-row>
+
+    <mat-icon (click)="drawer.toggle()" style="margin-right:10px;align-self: center;cursor: pointer;outline-color: cornflowerblue;">menu</mat-icon>
+
+    <span style="color: white;font-family:'MuseoModerno', cursive;cursor: pointer;outline: none;"
+    routerLink='/'
+    >Wapify</span>
+    <span class="example-spacer"></span>
+    <button mat-button style="color: white;margin-right: 10px;"
+    >PROFILE</button>
+
+    <button mat-raised-button style="background-color: white;color: #448AFF;"
+    >LOGOUT</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" [hasBackdrop]="true">
+
+  <mat-drawer #drawer mode="over" style="width: 300px;">
+    <mat-selection-list [multiple]="false">
+
+      <mat-list-option (click)="changeStatus('music')">
+        <div fxLayout="row">
+          <div fxFlex="10">
+            <mat-icon>home</mat-icon>
+          </div>
+          <div fxFlex="80" style="margin-left: 10px;">My Songs</div>
+        </div>
+      </mat-list-option>
+
+      <mat-list-option (click)="changeStatus('beat')">
+        <div fxLayout="row">
+          <div fxFlex="10">
+            <mat-icon>topic</mat-icon>
+          </div>
+          <div fxFlex="90" style="margin-left: 10px;">My Beats</div>
+        </div>
+
+      </mat-list-option>
+
+      <mat-list-option (click)="changeStatus('photo')">
+        <div fxLayout="row">
+          <div fxFlex="10">
+            <mat-icon>topic</mat-icon>
+          </div>
+          <div fxFlex="90" style="margin-left: 10px;">My CoverPhotos</div>
+        </div>
+
+      </mat-list-option>
+    </mat-selection-list>
+
+  </mat-drawer>
+
+  <mat-drawer-content style="margin:10px">
+
+    <div *ngIf="status === 'music' ">
+
+      <div fxLayout="row">
+
+        <div *ngIf="noResultLayoutStatus === true">
+          <img src="https://img.icons8.com/color/48/000000/empty-box.png"/>
+          <div>No Results</div>
+        </div>
+
+        <div *ngIf="noResultLayoutStatus === false">
+          <mat-list role="list" *ngFor="let audio of audioStreamerFromFirebase">
+
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color:  #E4E8EB;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;color: black;" (click)="playStream(audio.payload.doc.data().artirst,audio.payload.doc.data().title,audio.payload.doc.data().imageCover,audio.payload.doc.data().songUrl)">play_circle_filled</mat-icon>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">{{audio.payload.doc.data().artirst}}</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;color: black;">{{audio.payload.doc.data().title}}</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">3:03</div>
+                  <div>
+                    <div>
+                      <mat-icon style="margin-right: 10px;cursor: pointer;color: black;">edit</mat-icon>
+                      <mat-icon style="cursor: pointer;color:red" (click)="deleteMusic(audio.payload.doc.id)">delete</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+          </mat-list>
+        </div>
+
+        <div style="margin-left: 10px;">
+          <mat-card style="height: 150px;width: 220px;background-color: #448AFF;border-radius: 4px;">
+            <p style="text-align: center;color: white;font-family: 'Rubik', sans-serif;font-size:medium;">Filter Results</p>
+            <mat-radio-group class="example-radio-group">
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                New Release
+              </mat-radio-button>
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                Most Liked
+              </mat-radio-button>
+
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                Most Listened
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card>
+        </div>
+
+      </div>
+
+      
+
+    </div>
+
+
+
+    <div *ngIf="status === 'beat' ">
+
+      <div *ngIf="noResultLayoutStatus === true">
+        <img src="https://img.icons8.com/color/48/000000/empty-box.png"/>
+        <div>No Results</div>
+      </div>
+
+      <div *ngIf="noResultLayoutStatus === false">
+        <mat-list role="list"style="margin-bottom: 20px">
+          <mat-list-item>
+            <mat-card style="width: 900px;margin-bottom: 10px;background-color: #E4E8EB;">
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <mat-icon style="cursor: pointer;color: black;">play_circle_filled</mat-icon>
+                </div>
+                <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">Emotional Beat</div>
+                <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;color: black;">{{"ADAM"}}</div>
+                <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">3:03</div>
+                <button mat-raised-button style="background-color: #2979FF;color: white;">{{"TSH 8,000/="}}</button>
+                <div style="font-family: 'Rubik', sans-serif;font-size:medium;color: black;">700K Streams</div>
+                <div>
+                  <mat-icon style="margin-right: 10px; cursor: pointer;color: black;">edit</mat-icon>
+                  <mat-icon style="cursor: pointer;color: red;" (click)="deleteBeat()">delete</mat-icon>
+                </div>
+              </div>
+            </mat-card>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+
+    </div>
+
+
+    <div *ngIf="status === 'photo' ">
+
+      <div fxLayout="row">
+
+        <div *ngIf="noResultLayoutStatus === true">
+          <img src="https://img.icons8.com/color/48/000000/empty-box.png"/>
+          <div>No Results</div>
+        </div>
+
+        <div *ngIf="noResultLayoutStatus === false">
+          <mat-list role="list" *ngFor="let audio of audioStreamerFromFirebase">
+
+            <mat-list-item role="listitem" style="margin-bottom: 20px">
+              <mat-card style="width: 900px;background-color: black;">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-icon style="cursor: pointer;" (click)="playStream(audio.payload.doc.data().artirst,audio.payload.doc.data().title,audio.payload.doc.data().imageCover,audio.payload.doc.data().songUrl)">play_circle_filled</mat-icon>
+                  </div>
+
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">{{audio.payload.doc.data().artirst}}</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;cursor: pointer;">{{audio.payload.doc.data().title}}</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">3:03</div>
+                  <div style="font-family: 'Rubik', sans-serif;font-size:medium;">120K Streams</div>
+                </div>
+              </mat-card>
+            </mat-list-item>
+          </mat-list>
+        </div>
+
+        <div style="margin-left: 10px;">
+          <mat-card style="height: 150px;width: 220px;background-color: black;border-radius: 4px;">
+            <p style="text-align: center;color: white;font-family: 'Rubik', sans-serif;font-size:medium;">Filter Results</p>
+            <mat-radio-group class="example-radio-group">
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                New Release
+              </mat-radio-button>
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                Most Liked
+              </mat-radio-button>
+
+              <mat-radio-button class="example-radio-button"
+              style="font-family: 'Rubik', sans-serif;font-size:medium;">
+                Most Listened
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card>
+        </div>
+
+      </div>
+
+    </div>
+
+
+ </mat-drawer-content>
+</mat-drawer-container>

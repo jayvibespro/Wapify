@@ -1,20 +1,15 @@
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color:#000000;
-  color: white;
-  text-align: center;
-}
+
 ::ng-deep .mat-progress-bar-fill::after {
   background-color: #2979FF;
 }
-
+.mat-icon{
+  color: white;
+}
 ::ng-deep .mat-progress-bar-buffer {
   background: #E4E8EB;
 }
+
 
 ::ng-deep .mat-progress-bar {
   border-radius: 2px;
@@ -33,3 +28,156 @@
 .example-radio-button {
   margin: 5px;
 }
+
+.example-icon {
+  padding: 0 14px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary{
+  background-color: #448AFF;
+  color: #448AFF;
+}
+
+[toolBar]{
+  z-index: 5;
+  position: sticky;
+  top: 0;
+}
+
+::ng-deep .mat-menu-content{
+  background-color:white;
+}
+
+::ng-deep .mat-drawer{
+  background-color: black;
+}
+
+::ng-deep .mat-drawer-content{
+  background-color: black;
+  height: 100%;
+}
+
+
+.avatar {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.image-box {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.example-container {
+  width: 100%;
+  height: 100%;
+
+}
+.chart_side_nav {
+  height: 100%;
+}
+
+.songArtist{
+  display: inline-block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:black;
+  color: white;
+  text-align: center;
+}
+.songName {
+  display: inline-block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.resultOnPhone{
+  display: none;
+}
+
+.phoneFooter{
+  display: none;
+}
+
+
+
+@media (max-width:600px){
+
+  .classContainer{
+    flex-wrap: wrap;
+  }
+  .categoryClass1{
+    width: 100%;
+  }
+
+  .categoryClass2{
+    width: 100%;
+  }
+  .categoryClass3{
+    width: 100%;
+  }
+
+  .categoryClass4{
+    width: 100%;
+  }
+
+  mat-card{
+    width: 100%;
+  }
+  .resultOnPhone{
+    width: 100%;
+    display: block;
+  }
+
+  .resultOnLarge{
+    display: none;
+  }
+
+  .categoryClass5{
+    width: 100%;
+  }
+
+  .musicCover{
+    display: none;
+  }
+
+
+  .filterClass{
+    display: none;
+  }
+
+  .phoneFooter{
+    width: 100%;
+    display: block;
+  }
+  .pcFooter{
+    display: none;
+  }
+
+
+
+  .image-box{
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+

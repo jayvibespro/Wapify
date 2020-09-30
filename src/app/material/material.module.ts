@@ -13,15 +13,30 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
-
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 const material = [
   MatToolbarModule,
   MatButtonModule,
+  MatDialogModule,
   MatCardModule,
+  MatTooltipModule,
+  MatExpansionModule,
+  MatSidenavModule,
   MatInputModule,
+  MatProgressSpinnerModule,
   MatIconModule,
+  MatSnackBarModule,
   FlexLayoutModule,
   MatMenuModule,
+  MatStepperModule,
+  MatBottomSheetModule,
   MatChipsModule,
   MatSliderModule,
   MatProgressBarModule,

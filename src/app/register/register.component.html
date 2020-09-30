@@ -1,3 +1,5 @@
+<mat-progress-bar mode="indeterminate" *ngIf="progressStatus === true"></mat-progress-bar>
+
 <app-toolbar></app-toolbar>
 
 <div  fxLayout="row" fxLayoutAlign="center center">
@@ -6,10 +8,16 @@
     <h3 style="text-align: center;color: black;font-family: 'Rubik', sans-serif">Create your account</h3>
     <h5 style="text-align: center;color: black;font-family: 'Rubik', sans-serif">Forever free. No credit card required.</h5>
 
-    <form class="example-form">
+    <form class="example-form" fxLayout="column" fxLayoutAlign="space-around center">
+
+      <input style="display: none"
+      type="file" (change)="imageSelector($event)" #fileInput>
+
+      <img src={{avatarFileUrl}} alt="Avatar" class="avatar" (click)="fileInput.click()">
+
       <mat-form-field class="example-full-width">
         <mat-label>Select Your Profesion</mat-label>
-        <select matNativeControl required style="color: black;">
+        <select matNativeControl required style="color: black;" [(ngModel)]="accountType" name="accountType">
           <option value="As Guest">As Guest</option>
           <option value="As Producer">As Producer</option>
           <option value="As Musician">As Musician</option>
@@ -17,26 +25,28 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
-        <input matInput style="color: black;" required>
+        <input matInput style="color: black;" required [(ngModel)]="username" name="username">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
-        <input matInput style="color: black;" required>
+        <input matInput style="color: black;" required [(ngModel)]="email" name="email">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput style="color: black;" required>
+        <input matInput type="password" style="color: black;" required [(ngModel)]="password" name="password">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Confirm Password</mat-label>
-        <input matInput style="color: black;" required>
+        <input matInput type="password" style="color: black;" required [(ngModel)]="confirmPass" name="confirmPass">
       </mat-form-field>
 
+    <button mat-raised-button style="width: 100%;background-color:#448AFF;" (click)="registerUser()">Register</button>
+
+
     </form>
-    <button mat-raised-button style="width: 100%;background-color:#448AFF;">Register</button>
 
   </mat-card>
 </div>

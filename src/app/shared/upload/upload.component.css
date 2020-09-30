@@ -1,0 +1,57 @@
+.inupload{
+width: 96;
+height: 96;
+}
+
+.songUpload{
+  width: 30%;
+  margin-left:10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  background-color: black;
+}
+
+.beatUpload{
+  width: 30%;
+  margin-left:10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  background-color: black;
+}
+
+.coverUpload{
+  width: 30%;
+  margin-left:10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  background-color: black;
+}
+
+.fileUploads{
+flex-direction: row;
+align-items: flex-start;
+}
+
+@media (max-width: 600px ){
+  .fileUploads{
+flex-direction: column;
+flex-wrap: wrap;
+
+  }
+
+  .songUpload{
+    width: 100%;
+
+  }
+
+.beatUpload{
+  width: 100%;
+}
+
+.coverUpload{
+  width: 100%;
+}
+
+}
+
+

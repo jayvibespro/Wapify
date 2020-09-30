@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-toolbar',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private afAuth:AngularFireAuth,
+    private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  logOut(){
+    this.afAuth.user.subscribe(user=>{
+      if(user !== null){
+        this.afAuth.signOut().then(()=>{
+          this.router.navigate(['/login']);
+        })
+      }
+
+    })
+
   }
 
 }

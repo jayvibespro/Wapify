@@ -19,3 +19,9 @@
 input.mat-input-element {
   color: white;
 }
+
+@media (max-width:600px){
+.frontquote{
+  font-size:smaller;
+}
+}

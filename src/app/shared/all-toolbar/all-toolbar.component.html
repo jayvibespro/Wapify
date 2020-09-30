@@ -1,4 +1,5 @@
 <mat-toolbar color="primary" toolBar>
+
   <mat-toolbar-row>
     <span style="color: white;font-family:'MuseoModerno', cursive;cursor: pointer;outline: none;"
     >Wapify</span>
@@ -12,7 +13,7 @@
         <mat-icon style="color: black;">admin_panel_settings</mat-icon>
         <span style="color: black;">Profile</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="logOut()">
         <mat-icon style="color: black;">next_plan</mat-icon>
         <span style="color: black;">LogOut</span>
       </button>

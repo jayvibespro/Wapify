@@ -1,0 +1,67 @@
+mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.example-container {
+  width: 100%;
+  height: 100%;
+}
+
+
+.mat-icon{
+  color: white;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary{
+  background-color: #448AFF;
+  color: #448AFF;
+}
+
+[toolBar]{
+  z-index: 5;
+  position: sticky;
+  top: 0;
+}
+
+
+
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #2979FF;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+  border-radius: 2px;
+}
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+  background-color: #448AFF !important;
+  color: #448AFF !important
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: #448AFF;
+}
+
+::ng-deep .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: #448AFF;
+
+}
+::ng-deep .mat-menu-content{
+  background-color:white;
+}
+
+::ng-deep .mat-drawer{
+  background-color: black;
+}
+
+::ng-deep .mat-drawer-content{
+  background-color: black;
+}

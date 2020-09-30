@@ -1,15 +1,142 @@
+
+<mat-progress-bar mode="indeterminate" *ngIf="progressStatus === true"></mat-progress-bar>
+
+<mat-toolbar color="primary" toolBar>
+  <mat-toolbar-row>
+    <span style="color: white;font-family:'MuseoModerno', cursive;cursor: pointer;outline: none;"
+    routerLink='/'
+    >Wapify</span>
+    <span class="example-spacer"></span>
+    <button mat-button style="color: white;margin-right: 10px;"
+    >PROFILE</button>
+
+    <button mat-raised-button style="background-color: white;color: #448AFF;"
+    >LOGOUT</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
 <h3 style="text-align: center;font-family: 'Rubik', sans-serif;">Upload your music to Wapify!</h3>
-<div fxLayout="column" fxLayoutAlign="space-around center">
-  <div style="border-style: dashed;width: 800px;height: 200px;" fxLayout="column" fxLayoutAlign="space-around center">
+<div fxLayout="column" fxLayoutAlign="space-around center" >
 
-    <div>
-      <label for="file">Select Audio File</label>
-      <input type="file" (change)="uploadAudio($event)" accept="audio/*"/>
-    </div>
+  <mat-card style="width: 800px;height: 500px;" fxLayout="column">
 
-    <div style="font-size: x-small;text-align: center;">
-      All Terms and Conditions Applies
-    </div>
+    <mat-horizontal-stepper [linear]="false" #stepper>
 
-  </div>
+      <mat-step label="Upload Your Song">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+
+          <div *ngIf="audioFileUrl !== null">
+            <mat-selection-list style="width:800px" [multiple]="false">
+              <mat-list-option style="margin: 10px;">
+                {{audioFileName}}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="space-between center" style="margin-top: 90px;">
+            <div>
+              <input style="display: none"
+              type="file" (change)="uploadAudio($event)" #fileInput accept="audio/*" >
+              <button color = "warn" mat-raised-button (click)="fileInput.click()" *ngIf="audioFileUrl === null">Select Audio File</button>
+              <button color = "warn" mat-raised-button *ngIf="audioFileUrl !== null" matStepperNext>NEXT</button>
+
+
+            </div>
+
+            <div style="font-size: x-small;text-align: center;">
+              Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.
+            </div>
+          </div>
+
+        </div>
+
+      </mat-step>
+
+      <mat-step label="Metadata">
+
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Artist Name</mat-label>
+              <input matInput name="artist" [(ngModel)]="artistName" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Title</mat-label>
+              <input matInput [(ngModel)]="title" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Song Producers</mat-label>
+              <input matInput [(ngModel)]="producer" required>
+            </mat-form-field>
+          </div>
+
+
+          <div>
+
+            <div fxLayout="column" fxLayoutAlign="space-around center">
+              <div>
+                <img src={{imageUrl}} (click)="fileInputImage.click()" style="cursor: pointer;" style="width: 100px;height:100px"/>
+              </div>
+             </div>
+             <input style="display: none" type="file" (change)="selectImage($event)" #fileInputImage accept=".png,.jpg">
+
+          </div>
+
+        </div>
+
+        <div fxLayout="row">
+          <mat-form-field>
+            <mat-label>Choose Genre</mat-label>
+            <mat-select [(ngModel)]="genre" required>
+              <mat-option value="RAP">RAP</mat-option>
+              <mat-option value="R&B" >R&B</mat-option>
+              <mat-option value="TRAP" >TRAP</mat-option>
+
+              <mat-option value="POP" >POP</mat-option>
+              <mat-option value="GOSPEL" >GOSPEL</mat-option>
+              <mat-option value="ROCK" >ROCK</mat-option>
+              <mat-option value="RUMBA" >RUMBA</mat-option>
+
+              <mat-option value="BONGO FLEVA" >BONGO FLEVA</mat-option>
+              <mat-option value="HIP POP">HIP POP</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="year_input" style="margin-left: 20px;">
+            <mat-label>Year</mat-label>
+            <input matInput [(ngModel)]="year" required>
+          </mat-form-field>
+        </div>
+
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Song Description</mat-label>
+          <textarea matInput [(ngModel)]="description" required></textarea>
+        </mat-form-field>
+
+        <button mat-button matStepperNext color="warn">Next</button>
+
+      </mat-step>
+
+       <mat-step label="Done">
+
+        <div fxLayout="column" fxLayoutAlign="space-between center" style="margin-top: 90px;">
+          <div>
+            <button color = "warn" mat-raised-button (click)="uploadMusicData()">UPLOAD</button>
+          </div>
+
+          <div style="font-size: x-small;text-align: center;">
+            By clicking Upload You agree terms and conditions
+          </div>
+        </div>
+
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card>
+
+
 </div>
